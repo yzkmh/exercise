@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+    <mapper namespace="Game">
+    	<resultMap type="Game" id="result">
+    		<result property="id" column="id"/>
+    		<result property="username" column="username"/>
+    		<result property="password" column="password"/>
+    		<result property="sex" column="sex"/>
+    		<result property="age" column="age"/>
+    		<result property="mail" column="mail"/>
+    	</resultMap>
+    	<select id="getGameById" parameterType="int" resultMap="result" >
+			SELECT * FROM [AccountDB].[dbo].[user_test_java_tb] WHERE id=#{id}
+    	</select>
+    	<select id="getUserByName" parameterType="String" resultMap="result" >
+			SELECT * FROM [AccountDB].[dbo].[user_test_java_tb] WHERE userName=#{userName}
+    	</select>
+    	<select id="getGameList" parameterType="int" resultMap="result" >
+			SELECT * FROM [AccountDB].[dbo].[user_test_java_tb]  order by id asc;
+    	</select>
+    	<insert id="addGame" parameterType="Game" >
+    			insert into [AccountDB].[dbo].[user_test_java_tb](username, password,sex,age,mail) values(#{username},#{password},#{sex},#{age},#{mail});	
+
+    	</insert>
+    	<update  id="updateGame" parameterType="Game" >
+    	update [AccountDB].[dbo].[user_test_java_tb] set username=#{username},password=#{password},sex=#{sex},age=#{age},mail=#{mail} where id=#{id};
+    	</update >
+    </mapper>

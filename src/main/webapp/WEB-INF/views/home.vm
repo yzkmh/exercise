@@ -1,0 +1,92 @@
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+<h1>
+游戏列表
+</h1>
+
+<div>
+	<table width="300" border="1" bordercolor="black" cellspacing="0">
+                 <tr>   
+					<td>序号</td>
+                   <td>用户名</td>
+                   <td>性别</td>
+				   <td>年龄</td>
+				   <td>邮箱</td>
+				<!--   <td>操作</td> -->
+                 </tr>
+				 #foreach($game in $list)
+                  <tr>
+					<td>$game.id</td>
+                   <td>$game.userName</td>
+                   <td>$game.sex</td>
+				   <td>$game.age</td>
+				   <td>$game.mail</td>
+				<!--   <td><a href="./ModifyGame?id=$game.id">修改</a></td> -->
+                 </tr>
+				 #end
+               </table>
+</div>
+<hr>&nbsp;
+	
+	<div>
+	<form method="POST" action="./searchName">
+<h2>搜索：</h2>
+<br/>
+姓名1：<input type="text" name="userName"></input>
+姓名2：<input type="text" name="userName"></input>
+姓名3：<input type="text" name="userName"></input>
+		<br/>
+		<input type="submit" value="提交"/>
+		    </form>
+</div>
+搜索结果：
+<div>
+	<table width="300" border="1" bordercolor="black" cellspacing="0">
+                 <tr>   
+					<td>序号</td>
+                   <td>用户名</td>
+                   <td>性别</td>
+				   <td>年龄</td>
+				   <td>邮箱</td>
+				<!--   <td>操作</td> -->
+                 </tr>
+				 #foreach($game2 in $list2)
+                  <tr>
+					<td>$game2.id</td>
+                   <td>$game2.userName</td>
+                   <td>$game2.sex</td>
+				   <td>$game2.age</td>
+				   <td>$game2.mail</td>
+				<!--   <td><a href="./ModifyGame?id=$game.id">修改</a></td> -->
+                 </tr>
+				 #end
+               </table>
+</div>
+<hr>&nbsp;
+	<h2>
+注册新用户
+</h2>
+<div>
+	<form method="POST" action="./postNewGame">
+ 用户名：<input type="text" name="userName"></input>
+		<br/>
+ 密码：<input type="text" name="password"></input>
+ <br/>
+ 性别：<input type="text" name="sex"></input>
+ <br/>
+ 年龄：<input type="text" name="age"></input>
+ <br/>
+ 邮箱：<input type="text" name="mail"></input>
+		<br/>
+		<input type="submit" value="提交"/>
+    </form>
+</div>
+
+</body>
+</html> 
